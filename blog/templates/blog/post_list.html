@@ -3,73 +3,16 @@
         <title>Django Girls blog</title>
     </head>
     <body>
-        <div>
-            <h1><a href="/">Django Girls Blog</a></h1>
-        </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My first post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My second post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-        </div>
+        
+            <div>
+                <h1><a href="/">Django Girls Blog</a></h1>
+            </div>
+            {% for post in posts %}
+                <div>
+                    <p>published: {{ post.published_date }}</p>
+                    <h2><a href="">{{ post.title }}</a></h2>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
     </body>
 </html>
-We've created three div sections here.
-
-The first div element contains the title of our blog – it's a heading and a link
-Another two div elements contain our blog posts with a published date, h2 with a post title that is clickable and two ps (paragraph) of text, one for the date and one for our blog post.
-It gives us this effect:
-
-Figure 11.4
-
-Yaaay! But so far, our template only ever displays exactly the same information – whereas earlier we were talking about templates as allowing us to display different information in the same format.
-
-What we really want to do is display real posts added in our Django admin – and that's where we're going next.
-
-One more thing: deploy!
-It'd be good to see all this out and live on the Internet, right? Let's do another PythonAnywhere deploy:
-
-Commit, and push your code up to GitHub
-First off, let's see what files have changed since we last deployed (run these commands locally, not on PythonAnywhere):
-
-command-line
-$ git status
-Make sure you're in the djangogirls directory and let's tell git to include all the changes in this directory:
-
-command-line
-$ git add --all .
---all means that git will also recognize if you've deleted files (by default, it only recognizes new/modified files). Also remember (from chapter 3) that . means the current directory.
-
-Before we upload all the files, let's check what git will be uploading (all the files that git will upload should now appear in green):
-
-command-line
-$ git status
-We're almost there, now it's time to tell it to save this change in its history. We're going to give it a "commit message" where we describe what we've changed. You can type anything you'd like at this stage, but it's helpful to type something descriptive so that you can remember what you've done in the future.
-
-command-line
-$ git commit -m "Changed the HTML for the site."
-Make sure you use double quotes around the commit message.
-
-Once we've done that, we upload (push) our changes up to GitHub:
-
-command-line
-$ git push
-Pull your new code down to PythonAnywhere, and reload your web app
-Open up the PythonAnywhere consoles page and go to your Bash console (or start a new one). Then, run:
-PythonAnywhere command-line
-$ cd ~/<your-pythonanywhere-domain>.pythonanywhere.com
-$ git pull
-[...]
-You'll need to substitute <your-pythonanywhere-domain> with your actual PythonAnywhere subdomain name, without the angle-brackets. Your subdomain name is normally your PythonAnywhere user name, but in some cases it might be a bit different (such as if your user name contains capital letters). So if this command doesn't work, use the ls (list files) command to find your actual subdomain/folder name, and then cd to there.
-
-Now watch your code get downloaded. If you want to check that it's arrived, you can hop over to the "Files" page and view your code on PythonAnywhere (you can reach other PythonAnywhere pages from the menu button on the console page).
-
-Finally, hop on over to the "Web" page and hit Reload on your web app.
-Your update should be live! Go ahead and refresh your website in the browser. Changes should be visible. :)
-

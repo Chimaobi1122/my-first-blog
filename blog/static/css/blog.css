@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(206, 198, 192);
+    background-color: rgb(198, 202, 207);
 }
 .page-header {
     background-color: #C25100;
@@ -15,6 +15,7 @@ body{
 
 .content {
     margin-left: 40px;
+    
 }
 
 h1, h2, h3, h4 {
@@ -23,6 +24,7 @@ h1, h2, h3, h4 {
 
 .date {
     color: #828282;
+    font-size: 15px;
 }
 
 .save {
